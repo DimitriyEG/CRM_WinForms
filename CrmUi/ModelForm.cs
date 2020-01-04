@@ -22,20 +22,29 @@ namespace CrmUi
         }
 
         private void button1_Click(object sender, EventArgs e)
-        { 
+        {
+            
             var cashBoxes = new List<CashBoxView>();
 
             for(int i = 0; i < model.CashDesks.Count; i++)
             {
-                var box = new CashBoxView(model.CashDesks[i], i, 10, 26 * i);
+                var box = new CashBoxView(model.CashDesks[i], i, 30, 26 * i);
                 cashBoxes.Add(box);
                 Controls.Add(box.CashDeskName);
                 Controls.Add(box.Price);
                 Controls.Add(box.QueueLenght);
                 Controls.Add(box.LeaveCustomersCount);
+                Controls.Add(box.ServedCustomer);
+                Controls.Add(box.TotalCustomer);
+            }
+            label4.Text = cashBoxes.Count.ToString();
+            model.Start();
+            
+            while (true)
+            {
+                
             }
 
-            model.Start();
         }
 
         private void ModelForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -47,6 +56,7 @@ namespace CrmUi
         {
             numericUpDown1.Value = model.CustomerSpeed;
             numericUpDown2.Value = model.CashDeskSpeed;
+            
         }
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
@@ -62,6 +72,28 @@ namespace CrmUi
         private void ModelForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             model.Stop();
+            //Close();
+        }
+
+
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+            model.Stop();
+            
+
+            
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

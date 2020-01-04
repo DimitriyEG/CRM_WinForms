@@ -9,7 +9,7 @@ namespace CrmBl.Model
 {
     public class ShopComputerModel
     {
-
+        public int CashDescCount { get; set; }
         Generator Generator = new Generator();
         Random rnd = new Random();
         List<Task> tasks = new List<Task>();
@@ -48,7 +48,7 @@ namespace CrmBl.Model
         /// <summary>
         /// Количество касс
         /// </summary>
-
+        
 
         public ShopComputerModel()
         {
@@ -64,7 +64,7 @@ namespace CrmBl.Model
                 Sellers.Enqueue(seller);
             }
 
-            for(int i = 0; i < 7; i++)
+            for(int i = 0; i < CashDescCount; i++)
             {
                 CashDesks.Add(new CashDesk(i, Sellers.Dequeue(), null));
             }

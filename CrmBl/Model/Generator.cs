@@ -3,15 +3,29 @@ using System.Collections.Generic;
 
 namespace CrmBl.Model
 {
+    /// <summary>
+    /// Генератор сущностей
+    /// </summary>
     public class Generator
     {
         Random rnd = new Random();
-
-
+        /// <summary>
+        /// Список покупателей
+        /// </summary>
         public List<Customer> Customers { get; set; } = new List<Customer>();
+        /// <summary>
+        /// Список продуктов
+        /// </summary>
         public List<Product> Products { get; set; } = new List<Product>();
+        /// <summary>
+        /// Список продавцов
+        /// </summary>
         public List<Seller> Sellers { get; set; } = new List<Seller>();
-
+        /// <summary>
+        /// вызов генератора покупателей (количество)
+        /// </summary>
+        /// <param name="count">Количество покупателей</param>
+        /// <returns>Коллекция покупателей</returns>
         public List<Customer> GetNewCustomers(int count)
         {
             var result = new List<Customer>();
@@ -48,6 +62,11 @@ namespace CrmBl.Model
             return result;
         }
 
+        /// <summary>
+        /// Создать случайный товар
+        /// </summary>
+        /// <param name="count">Количество товаров</param>
+        /// <returns>Коллекция случайных товаров</returns>
         public List<Product> GetNewProducts(int count)
         {
             var result = new List<Product>();
@@ -67,7 +86,12 @@ namespace CrmBl.Model
 
             return result;
         }
-
+        /// <summary>
+        /// Получить рандомное количество товара
+        /// </summary>
+        /// <param name="min">От</param>
+        /// <param name="max">До</param>
+        /// <returns>Коллекция случайного количества товара</returns>
         public List<Product> GetRandomProducts(int min, int max)
         {
             var result = new List<Product>();

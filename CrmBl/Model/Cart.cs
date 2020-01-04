@@ -4,9 +4,18 @@ using System.Linq;
 
 namespace CrmBl.Model
 {
+    /// <summary>
+    /// Класс покупательской корзины
+    /// </summary>
     public class Cart : IEnumerable
     {
+        /// <summary>
+        /// Покупатель
+        /// </summary>
         public Customer Customer { get; set; }
+        /// <summary>
+        /// Список товар Название - количество
+        /// </summary>
         public Dictionary<Product, int> Products { get; set; }
         public decimal Price => GetAll().Sum(p => p.Price);
 
@@ -16,13 +25,17 @@ namespace CrmBl.Model
             Products = new Dictionary<Product, int>();
         }
 
+        /// <summary>
+        /// ДОбавление товара в корзину
+        /// </summary>
+        /// <param name="product">Получаем конкретный товар</param>
         public void Add(Product product)
         {
-            if(Products.TryGetValue(product, out int count))
+            if(Products.TryGetValue(product, out int count)) //Если товар уже есть в корзине, увеличиваем его количество
             {
                 Products[product] = ++count;
             }
-            else
+            else //Иначе добавляем новый товар в словарь в количестве 1 единицы
             {
                 Products.Add(product, 1);
             }
@@ -39,6 +52,10 @@ namespace CrmBl.Model
             }
         }
 
+        /// <summary>
+        /// Получить список товаров в корзине
+        /// </summary>
+        /// <returns>Возвращает список товаров в формате List(Product)</returns>
         public List<Product> GetAll()
         {
             var result = new List<Product>();
