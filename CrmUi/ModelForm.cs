@@ -39,11 +39,8 @@ namespace CrmUi
             }
             label4.Text = cashBoxes.Count.ToString();
             model.Start();
-            
-            while (true)
-            {
-                
-            }
+            button1.Enabled = false;
+
 
         }
 
@@ -92,6 +89,16 @@ namespace CrmUi
         }
 
         private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
         {
 
         }
